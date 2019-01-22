@@ -1,0 +1,7 @@
+C:\Users\Evangelos\Documents\GitHub\CicadaToolkit\Cicada_alpha\cicada00\cicada00\bin\cicada00.dll
+C:\Users\Evangelos\Documents\GitHub\CicadaToolkit\Cicada_alpha\cicada00\cicada00\bin\cicada00.pdb
+C:\Users\Evangelos\Documents\GitHub\CicadaToolkit\Cicada_alpha\cicada00\cicada00\obj\Debug64\cicada00.csprojResolveAssemblyReference.cache
+C:\Users\Evangelos\Documents\GitHub\CicadaToolkit\Cicada_alpha\cicada00\cicada00\obj\Debug64\cicada00.Properties.Resources.resources
+C:\Users\Evangelos\Documents\GitHub\CicadaToolkit\Cicada_alpha\cicada00\cicada00\obj\Debug64\cicada00.csproj.GenerateResource.Cache
+C:\Users\Evangelos\Documents\GitHub\CicadaToolkit\Cicada_alpha\cicada00\cicada00\obj\Debug64\cicada00.dll
+C:\Users\Evangelos\Documents\GitHub\CicadaToolkit\Cicada_alpha\cicada00\cicada00\obj\Debug64\cicada00.pdb
