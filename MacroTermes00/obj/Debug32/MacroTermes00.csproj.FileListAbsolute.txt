@@ -1,0 +1,4 @@
+C:\Users\evang\OneDrive\Documents\GitHub\termites\MacroTermes00\obj\Debug32\MacroTermes00.csprojAssemblyReference.cache
+C:\Users\evang\OneDrive\Documents\GitHub\termites\MacroTermes00\obj\Debug32\macroTermes00.Properties.Resources.resources
+C:\Users\evang\OneDrive\Documents\GitHub\termites\MacroTermes00\obj\Debug32\MacroTermes00.csproj.GenerateResource.cache
+C:\Users\evang\OneDrive\Documents\GitHub\termites\MacroTermes00\obj\Debug32\MacroTermes00.csproj.CoreCompileInputs.cache

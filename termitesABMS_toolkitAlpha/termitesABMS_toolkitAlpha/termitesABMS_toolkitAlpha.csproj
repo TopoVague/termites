@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{449F2A2B-8345-45C7-9D36-9AD5CC29E0B7}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>termitesABMS_toolkitAlpha</RootNamespace>
+    <AssemblyName>termitesABMS_toolkitAlpha</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="RhinoCommon">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files\Rhino 6\System\rhinocommon.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Grasshopper">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files\Rhino 6\Plug-ins\Grasshopper\Grasshopper.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="GH_IO">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files\Rhino 6\Plug-ins\Grasshopper\GH_IO.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="basicTermiteGeometry\GHC_createPyramid.cs" />
+    <Compile Include="basicTermiteGeometry\GHC_displayPyramid.cs" />
+    <Compile Include="basicTermiteGeometry\Pyramid.cs" />
+    <Compile Include="environments\AgentEnvironment.cs" />
+    <Compile Include="environments\GHC_create3DEnvironment.cs" />
+    <Compile Include="environments\GHC_create2DEnvironment.cs" />
+    <Compile Include="environments\GHC_DisplayGenericAgentEnvironment.cs" />
+    <Compile Include="flockingSimulation\FlockAgent.cs" />
+    <Compile Include="flockingSimulation\FlockSystem.cs" />
+    <Compile Include="flockingSimulation\GHC_flockingSimulation.cs" />
+    <Compile Include="GHC_centroid.cs" />
+    <Compile Include="GHC_helloTermites.cs" />
+    <Compile Include="GHC_TermiteSolver.cs" />
+    <Compile Include="GHC_GenericAgent.cs" />
+    <Compile Include="GHC_SystemSetup.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="termitesABMStoolkitAlphaComponent.cs" />
+    <Compile Include="termitesABMS_toolkitAlphaInfo.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Util.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\termitesGhxIcon_temp_05.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\termitesGhxIcon_temp_06.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\termitesGhxIcon_temp_07.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\termitesGhxIcon_temp_01.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\termitesGhxIcon_temp_02.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\termitesGhxIcon_temp_03.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\termitesGhxIcon_temp_04.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\termitesGhxIcon_temp_08.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bristleBotSimulation\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\termitesGhxIcon_temp_10.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\termitesGhxIcon_temp_11.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\termitesGhxIcon_temp_12.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\termitesGhxIcon_temp_13.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <PropertyGroup>
+    <PostBuildEvent>Copy "$(TargetPath)" "C:\Users\evang\AppData\Roaming\Grasshopper\Libraries\termitesAlpha.gha"
+Erase "$(TargetPath)"</PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <FallbackCulture>en-US</FallbackCulture>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <StartProgram>C:\Program Files\Rhino 6\System\Rhino.exe</StartProgram>
+    <StartArguments>
+    </StartArguments>
+    <StartAction>Program</StartAction>
+  </PropertyGroup>
+</Project>

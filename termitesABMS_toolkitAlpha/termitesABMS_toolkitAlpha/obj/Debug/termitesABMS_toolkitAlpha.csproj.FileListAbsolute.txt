@@ -1,0 +1,8 @@
+C:\Users\evang\OneDrive\Documents\GitHub\termitesABMS_toolkitAlpha\termitesABMS_toolkitAlpha\obj\Debug\termitesABMS_toolkitAlpha.csprojAssemblyReference.cache
+C:\Users\evang\OneDrive\Documents\GitHub\termitesABMS_toolkitAlpha\termitesABMS_toolkitAlpha\obj\Debug\termitesABMS_toolkitAlpha.Properties.Resources.resources
+C:\Users\evang\OneDrive\Documents\GitHub\termitesABMS_toolkitAlpha\termitesABMS_toolkitAlpha\obj\Debug\termitesABMS_toolkitAlpha.csproj.GenerateResource.cache
+C:\Users\evang\OneDrive\Documents\GitHub\termitesABMS_toolkitAlpha\termitesABMS_toolkitAlpha\obj\Debug\termitesABMS_toolkitAlpha.csproj.CoreCompileInputs.cache
+C:\Users\evang\OneDrive\Documents\GitHub\termitesABMS_toolkitAlpha\termitesABMS_toolkitAlpha\bin\termitesABMS_toolkitAlpha.dll
+C:\Users\evang\OneDrive\Documents\GitHub\termitesABMS_toolkitAlpha\termitesABMS_toolkitAlpha\bin\termitesABMS_toolkitAlpha.pdb
+C:\Users\evang\OneDrive\Documents\GitHub\termitesABMS_toolkitAlpha\termitesABMS_toolkitAlpha\obj\Debug\termitesABMS_toolkitAlpha.dll
+C:\Users\evang\OneDrive\Documents\GitHub\termitesABMS_toolkitAlpha\termitesABMS_toolkitAlpha\obj\Debug\termitesABMS_toolkitAlpha.pdb
