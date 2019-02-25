@@ -5,25 +5,24 @@ using Grasshopper.Kernel;
 using Rhino.Geometry;
 using Grasshopper.Kernel.Types;
 using termitesABMS_toolkitAlpha_r5.agentEnvironments;
+using termitesABMS_toolkitAlpha_r5.Agents;
 
-namespace termitesABMS_toolkitAlpha_r5.flockingSimulation
+namespace termitesABMS_toolkitAlpha_r5.bristleBotSimulation
 {
-    public class GHC_flockingSimulation : GH_Component
+    public class GHC_britlebotSimulation : GH_Component
     {
         /// <summary>
-        /// Initializes a new instance of the GHC_flockingSimulation class.
+        /// Initializes a new instance of the GHC_britlebotSimulation class.
         /// </summary>
-
-
-        public GHC_flockingSimulation()
-          : base("GHC_flockingSimulation", "Flock Sim",
-              "A component that runs a flocking simulation",
+        public GHC_britlebotSimulation()
+          : base("GHC_bristlebotSimulation", "bristlebot Sim",
+              "A component that runs simulation for bristlebots",
               "Termites", "4 | Simulations")
         {
 
         }
 
-        private FlockSystem flockSystem;
+        private BristlebotSystem bristlebotSystem;
         /// <summary>
         /// Registers all the input parameters for this component.
         /// </summary>
@@ -32,18 +31,13 @@ namespace termitesABMS_toolkitAlpha_r5.flockingSimulation
             pManager.AddBooleanParameter("Reset", "Reset", "Reset", GH_ParamAccess.item, false); //p0
             pManager.AddBooleanParameter("Play", "Play", "Play", GH_ParamAccess.item, false);//p1
             pManager.AddGenericParameter("Environment", "Environment", "Environment", GH_ParamAccess.item); //p2
-            pManager.AddBooleanParameter("isSimulation3D", "isSimulation3D", "isSimulation3D", GH_ParamAccess.item, false); //p3
+            pManager.AddGenericParameter("BristlebotAgent", "BristlebotAgent", "BristlebotAgent", GH_ParamAccess.item); //p3
             pManager.AddIntegerParameter("Count", "Count", "Count", GH_ParamAccess.item, 10);//p4
-            pManager.AddNumberParameter("Timestep", "Timestep", "Timestep", GH_ParamAccess.item, 0.01); //p5
-            pManager.AddNumberParameter("NeighbourhoodRadius", "NeighbourhoodRadius", "NeighbourhoodRadius", GH_ParamAccess.item, 10); //p6
-            pManager.AddNumberParameter("Alignment", "Alignment", "Alignment", GH_ParamAccess.item, 1); //p7
-            pManager.AddNumberParameter("Cohesion", "Cohesion", "Cohesion", GH_ParamAccess.item, 1); //p8
-            pManager.AddNumberParameter("Separation", "Separation", "Separation", GH_ParamAccess.item, 1); //p9
-            pManager.AddNumberParameter("SeparationDistance", "SeparationDistance", "SeparationDistance", GH_ParamAccess.item, 5); //p10
-            pManager.AddCircleParameter("Repellers", "Repellers", "Repellers", GH_ParamAccess.list); //p11
-            pManager[11].Optional = true;
-            pManager.AddBooleanParameter("UseCoresInParallel", "UseCoresInParallel", "UseCoresInParallel", GH_ParamAccess.item, true); //p12
-            pManager.AddBooleanParameter("UseR-TreeSearch", "UseR-TreeSearch", "UseR-TreeSearch", GH_ParamAccess.item, true); //p13
+            pManager.AddGenericParameter("SimulationSettings", "SimulationSettings", "SimulationSettings", GH_ParamAccess.item); //p5
+            pManager.AddCircleParameter("Repellers", "Repellers", "Repellers", GH_ParamAccess.list); //p6
+            pManager[7].Optional = true;
+            pManager.AddBooleanParameter("UseCoresInParallel", "UseCoresInParallel", "UseCoresInParallel", GH_ParamAccess.item, true); //p7
+            pManager.AddBooleanParameter("UseR-TreeSearch", "UseR-TreeSearch", "UseR-TreeSearch", GH_ParamAccess.item, true); //p8
         }
 
         /// <summary>
@@ -67,17 +61,18 @@ namespace termitesABMS_toolkitAlpha_r5.flockingSimulation
             //declare input parameters
             bool iReset = false;
             bool iPlay = false;
+            Point3d initPos = new Point3d(0,0,0);
+            Vector3d initVel = new Vector3d(0.5, 0.5, 1);
 
             AgentEnvironment iAgentEnvironment = new AgentEnvironment(Plane.WorldXY, 50.0, 50.0, 0);
-            bool i3D = false;
+            BristlebotAgent iBristlebot = new BristlebotAgent(initPos, initVel);
             int iCount = 10;
             double iTimeStep = 0.01;
+
             double iNeighbourhoodRadius = 1;
-            double iAlignment = 0.0;
-            double iCohesion = 0.0;
-            double iSeparation = 0.0;
             double iSeparationDistance = 1.0;
             List<Circle> iRepellers = new List<Circle>();
+
             bool iUseParallel = false;
             bool iUseRTree = false;
 
@@ -85,41 +80,36 @@ namespace termitesABMS_toolkitAlpha_r5.flockingSimulation
             DA.GetData("Reset", ref iReset); //0
             DA.GetData("Play", ref iPlay);//1
             DA.GetData("Environment", ref iAgentEnvironment);//2
-            DA.GetData("isSimulation3D", ref i3D);//3
+            DA.GetData("BristlebotAgent", ref iAgentEnvironment);//2
             DA.GetData("Count", ref iCount);//4
             DA.GetData("Timestep", ref iTimeStep);//5
             DA.GetData("NeighbourhoodRadius", ref iNeighbourhoodRadius);//6
-            DA.GetData("Alignment", ref iAlignment);//7
-            DA.GetData("Cohesion", ref iCohesion);//8
-            DA.GetData("Separation", ref iSeparation);//9
+
             DA.GetData("SeparationDistance", ref iSeparationDistance);//10
             DA.GetDataList("Repellers", iRepellers);//11
             DA.GetData("UseCoresInParallel", ref iUseParallel);//12
             DA.GetData("UseR-TreeSearch", ref iUseRTree);//13
 
 
-            if (iReset || flockSystem == null)
+            if (iReset || bristlebotSystem == null)
             {
-                flockSystem = new FlockSystem(iCount, i3D, iAgentEnvironment);
+                bristlebotSystem = new BristlebotSystem(iCount, iAgentEnvironment);
             }
             else
             {
-                flockSystem.Timestep = iTimeStep;
-                flockSystem.NeighbourhoodRadius = iNeighbourhoodRadius;
-                flockSystem.AlignmentStrength = iAlignment;
-                flockSystem.CohesionStrength = iCohesion;
-                flockSystem.SeparationStrength = iSeparation;
-                flockSystem.SeparationDistance = iSeparationDistance;
-                flockSystem.Repellers = iRepellers;
-                flockSystem.UseParallel = iUseParallel;
+    
+                bristlebotSystem.NeighbourhoodRadius = iNeighbourhoodRadius;
+
+                bristlebotSystem.Repellers = iRepellers;
+                bristlebotSystem.UseParallel = iUseParallel;
 
                 if (iUseRTree)
                 {
-                    flockSystem.updateUsingRTree();
+                    bristlebotSystem.updateUsingRTree();
                 }
                 else
                 {
-                    flockSystem.Update();
+                    bristlebotSystem.Update();
                 }
                 if (iPlay) ExpireSolution(true);
 
@@ -128,7 +118,7 @@ namespace termitesABMS_toolkitAlpha_r5.flockingSimulation
             List<GH_Point> positions = new List<GH_Point>();
             List<GH_Vector> velocities = new List<GH_Vector>();
 
-            foreach (FlockAgent agent in flockSystem.Agents)
+            foreach (BristlebotAgent agent in bristlebotSystem.Agents)
             {
                 positions.Add(new GH_Point(agent.Position));
                 velocities.Add(new GH_Vector(agent.Velocity));
@@ -148,7 +138,7 @@ namespace termitesABMS_toolkitAlpha_r5.flockingSimulation
             {
                 //You can add image files to your project resources and access them like this:
                 // return Resources.IconForThisComponent;
-                return Properties.Resources.termitesGhxIcon_temp_04;
+                return Properties.Resources.termitesGhxIcon_temp_15;
             }
         }
 
@@ -157,7 +147,7 @@ namespace termitesABMS_toolkitAlpha_r5.flockingSimulation
         /// </summary>
         public override Guid ComponentGuid
         {
-            get { return new Guid("11bea06a-3b26-4f2e-8bbe-72498edb5348"); }
+            get { return new Guid("11bea06a-3b26-4f2e-8bbe-72498edb5344"); }
         }
     }
 }

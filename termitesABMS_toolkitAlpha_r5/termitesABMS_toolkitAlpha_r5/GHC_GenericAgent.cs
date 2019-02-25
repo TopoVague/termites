@@ -52,8 +52,15 @@ namespace termitesABMS_toolkitAlpha_r5
             bool iReset = true;
             DA.GetData(0, ref iReset);
 
-            Vector3d iVelocity = new Vector3d();
-            DA.GetData(1, ref iVelocity);
+            //add this code to not need to a timer 
+            bool iPlay = false;
+            DA.GetData(1, ref iPlay);
+            if (iPlay)
+            {
+                ExpireSolution(true);
+            }
+
+            //provide a velocity vector
 
             Point3d iPosition = new Point3d();
             DA.GetData("initPosition", ref iPosition);
@@ -63,16 +70,15 @@ namespace termitesABMS_toolkitAlpha_r5
                 return;
             }
 
+            //provide a velocity vector
+            Vector3d iVelocity = new Vector3d();
+            DA.GetData(3, ref iVelocity);
+
+
             currentPosition += iVelocity;
             DA.SetData(0, currentPosition);
 
-            //add this code to not need to a timer 
-            bool iPlay = false;
-            DA.GetData(2, ref iPlay);
-            if (iPlay)
-            {
-                ExpireSolution(true);
-            }
+
 
         }
 

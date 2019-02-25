@@ -83,6 +83,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="PSO\GHC_PSO.cs" />
+    <Compile Include="PSO\Particle.cs" />
+    <Compile Include="PSO\PSOSystem.cs" />
     <Compile Include="termitesABMStoolkitAlphar5Component.cs" />
     <Compile Include="termitesABMS_toolkitAlpha_r5Info.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -128,13 +131,25 @@
     <None Include="Resources\termitesGhxIcon_temp_10.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\termitesGhxIcon_temp_17.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\termitesGhxIcon_temp_14.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\termitesGhxIcon_temp_15.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\termitesGhxIcon_temp_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\termitesGhxIcon_temp_13.png" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="Resources\termitesGhxIcon_temp_11.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\termitesGhxIcon_temp_12.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\termitesGhxIcon_temp_13.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

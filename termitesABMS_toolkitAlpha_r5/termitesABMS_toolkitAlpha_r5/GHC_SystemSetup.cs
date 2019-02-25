@@ -16,18 +16,21 @@ namespace termitesABMS_toolkitAlpha_r5
               "This is a test Grasshopper Component of Termites",
               "Termites", "0 | Termite System")
         {
+
         }
 
         /// <summary>
         /// Registers all the input parameters for this component.
         /// </summary>
+        /// 
+        
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
 
             //Default FilePath 
-
-            pManager.AddGenericParameter("ProjectFolderFilePath", "ProjectFolderFilePath", "This the file Path in your PC where the output data of your project will be stored", GH_ParamAccess.item);
-            pManager.AddNumberParameter("NoOfOutputs", "NoOfOutputs", "NoOfOutputs", GH_ParamAccess.item, 1.0);
+            string defaultFilePath = Environment.GetEnvironmentVariable("ALLUSERSPROFILE");
+            pManager.AddTextParameter("ProjectFolderFilePath", "ProjectFolderFilePath", "This the file Path in your PC where the output data of your project will be stored", GH_ParamAccess.item);
+            pManager.AddBooleanParameter("CreateFolderStructure", "CreateFolderStructure", "True=creates a folder structure at the porvided file path- Flase = it only creates on folder to store the output", GH_ParamAccess.item, true);
 
         }
 
@@ -36,8 +39,7 @@ namespace termitesABMS_toolkitAlpha_r5
         /// </summary>
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
-            pManager.AddTextParameter("ProjectFolderFilePath", "ProjectFolderFilePath", "We created a folder structure to keep all the data properly ", GH_ParamAccess.item);
-            pManager.AddNumberParameter("NoOfOutputs", "NoOfOutputs", "NoOfOutputs", GH_ParamAccess.item);
+            pManager.AddTextParameter("ProjectFolderFilePath", "ProjectFolderFilePath", "This is a component that checks your system and creates a folder structure to store your data ", GH_ParamAccess.item);
             pManager.AddTextParameter("info", "info", "Info about your system setup", GH_ParamAccess.item);
 
         }
@@ -53,49 +55,43 @@ namespace termitesABMS_toolkitAlpha_r5
             //callenvironment to get a local folder
             string defaultFilePath = Environment.GetEnvironmentVariable("ALLUSERSPROFILE");
             string iFilePath = "empty";
-            double iNoOfOutputs = 1.0;
+            bool iCreateFolderStructure = true;
             string fistMsg = "A folder structure has been created in your project folder ";
+            string secondMsg = "it is recommended to provided a file path so that you know where your files are saved ";
             //a default name for the project folder
             string defaultProjectFolderName = "TermitesProjectFolder";
 
-            bool successfulInput = DA.GetData("ProjectFolderFilePath", ref iFilePath);
-            bool successfulInput2 = DA.GetData("NoOfOutputs", ref iNoOfOutputs);
+            bool successfulInput = DA.GetData(0, ref iFilePath);
+            bool successfulInput2 = DA.GetData(1, ref iCreateFolderStructure);
+           
 
             if (successfulInput == true && successfulInput2 == true)
             {
 
-                DA.SetData(0, iFilePath + defaultProjectFolderName);
-                DA.SetData("NoOfOutputs", iNoOfOutputs);
-                DA.SetData("info", fistMsg);
-                Util.CreateFolderStructure(iFilePath + "TermitesProjectFolder", iNoOfOutputs);
+                DA.SetData(0, iFilePath );//+ defaultProjectFolderName
+                DA.SetData(1, fistMsg);
+                Util.CreateFolderStructure(iFilePath + "TermitesProjectFolder", iCreateFolderStructure);
                 //Util.CreateFileOrFolder(iFilePath + "TermitesProjectFolder");
 
             }
             else if (successfulInput == true && successfulInput2 == false)
             {
                 DA.SetData(0, iFilePath + defaultProjectFolderName);
-                double defaultOutputNo = 1.0;
-                DA.SetData(1, (int)defaultOutputNo);
-                DA.SetData(2, fistMsg);
-                Util.CreateFolderStructure(iFilePath, 1);
-                //Util.CreateFileOrFolder(iFilePath + "TermitesProjectFolder");
+                DA.SetData(1, fistMsg);
+                //Util.CreateFolderStructure(iFilePath, 1);
+                Util.CreateFileOrFolder(iFilePath + "TermitesProjectFolder");
             }
             else if (successfulInput == false && successfulInput2 == true)
             {
-                DA.SetData(0, defaultFilePath + defaultProjectFolderName);
-                DA.SetData(1, iNoOfOutputs);
-                DA.SetData(2, fistMsg);
-
-                Util.CreateFolderStructure(defaultFilePath, 1);
+                DA.SetData(0, defaultFilePath + "//" + defaultProjectFolderName);
+                DA.SetData(1, secondMsg);
+                Util.CreateFolderStructure(defaultFilePath, true);
                 // Util.CreateFileOrFolder(defaultFilePath + "\\TermitesProjectFolder");
             }
             else
             {
-                DA.SetData(0, defaultFilePath);
-                DA.SetData(1, 1);
-                DA.SetData(2, fistMsg);
-                // Util.CreateFolderStructure(defaultFilePath , 1);
-                Util.CreateFileOrFolder(defaultFilePath + "\\TermitesProjectFolder");
+                AddRuntimeMessage(GH_RuntimeMessageLevel.Error, "check you inputs again, you need to provide a valid filepath and an integer number");
+
             }
 
 
@@ -111,11 +107,8 @@ namespace termitesABMS_toolkitAlpha_r5
             get
             {
                 // You can add image files to your project resources and access them like this:
-                //return Resources.IconForThisComponent;
-                //return new System.Drawing.Bitmap("C:\\Users\\Evangelos\\Documents\\GitHub\\CicadaToolkit\\Cicada_alpha\\cicada00\\cicada00\\icon\\cicadaGhxIcon_temp-03.png");
                 return Properties.Resources.termitesGhxIcon_temp_11;
-                //return null;
-            }
+               }
         }
 
         /// <summary>

@@ -4,17 +4,17 @@ using System.Collections.Generic;
 using Grasshopper.Kernel;
 using Rhino.Geometry;
 
-namespace termitesABMS_toolkitAlpha_r5.agentEnvironments
+namespace termitesABMS_toolkitAlpha_r5
 {
-    public class GHC_DisplayGenericAgentEnvironment : GH_Component
+    public class GHC_TermiteEngine : GH_Component
     {
         /// <summary>
-        /// Initializes a new instance of the GHC_DisplayAgentEnvironment class.
+        /// Initializes a new instance of the GHC_TermiteEngine class.
         /// </summary>
-        public GHC_DisplayGenericAgentEnvironment()
-          : base("GHC_DisplayAgentEnvironment", "Display Environment",
-              "Visualize the Agents' Environment",
-               "Termites", "2 | Environments")
+        public GHC_TermiteEngine()
+          : base("GHC_TermiteEngine", "TermiteEngine",
+              "This is the termite modelling ",
+              "Termites", "3 | Modelling")
         {
         }
 
@@ -23,8 +23,6 @@ namespace termitesABMS_toolkitAlpha_r5.agentEnvironments
         /// </summary>
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
-            pManager.AddGenericParameter("AgentEnvironment", "AgentEnvironment", "AgentEnvironment", GH_ParamAccess.item);
-
         }
 
         /// <summary>
@@ -32,7 +30,6 @@ namespace termitesABMS_toolkitAlpha_r5.agentEnvironments
         /// </summary>
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
-            pManager.AddCurveParameter("EnvironmentDisplay", "EnvironmentDisplay", "EnvironmentDisplay", GH_ParamAccess.list);
         }
 
         /// <summary>
@@ -41,18 +38,6 @@ namespace termitesABMS_toolkitAlpha_r5.agentEnvironments
         /// <param name="DA">The DA object is used to retrieve from inputs and store in outputs.</param>
         protected override void SolveInstance(IGH_DataAccess DA)
         {
-            AgentEnvironment iAgentEnvironment = null;
-
-            DA.GetData("AgentEnvironment", ref iAgentEnvironment);
-            if (iAgentEnvironment.EnvDepth == 0)
-            {
-                DA.SetDataList("EnvironmentDisplay", iAgentEnvironment.Display2DGenericEnvironment());
-            }
-            else
-            {
-                DA.SetDataList("EnvironmentDisplay", iAgentEnvironment.Display3DGenericEnvironment());
-            }
-
         }
 
         /// <summary>
@@ -64,7 +49,7 @@ namespace termitesABMS_toolkitAlpha_r5.agentEnvironments
             {
                 //You can add image files to your project resources and access them like this:
                 // return Resources.IconForThisComponent;
-                return Properties.Resources.termitesGhxIcon_temp_15;
+                return null;
             }
         }
 
@@ -73,7 +58,7 @@ namespace termitesABMS_toolkitAlpha_r5.agentEnvironments
         /// </summary>
         public override Guid ComponentGuid
         {
-            get { return new Guid("ce88dc41-9968-4fa5-9bc5-014ce5511205"); }
+            get { return new Guid("5716cb64-4a07-40db-b11d-7a13697f7a26"); }
         }
     }
 }

@@ -45,17 +45,19 @@ namespace termitesABMS_toolkitAlpha_r5
 
         }
         //TODO add a method to create folder structure
-        public static void CreateFolderStructure(string FolderName, double noOfOutputs)
+        public static void CreateFolderStructure(string FolderPath, bool CreateFolderStructure)
         {
-            string folderName = FolderName;
-            double numberOfFolder = noOfOutputs;
-            string subFolderName = "SubFolder";
-            List<string> pathString = new List<string>();
-            for (int i = 0; i < numberOfFolder; i++)
-            {
+            string folderPath = FolderPath;
+            bool createFolderStructure = CreateFolderStructure;
 
-                pathString[i] = System.IO.Path.Combine(folderName, i + subFolderName);
-                System.IO.Directory.CreateDirectory(pathString[i]);
+            List<string> subFolderName =  new List<string>() { "00_resources", "01_runnable", "02_jarExportedGeometry", "03_analysisData", "04_archivedOutput", "05_GeometryVisualization", "06_Plots", "07_IVE" };
+            double numberOfFolder = subFolderName.Count();
+            string pathString ;
+
+            for (int i = 0; i < numberOfFolder; i++)
+            {              
+                pathString = System.IO.Path.Combine(folderPath, subFolderName[i]);
+                System.IO.Directory.CreateDirectory(pathString);
             }
             // To create a string that specifies the path to a subfolder under your 
 

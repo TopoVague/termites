@@ -72,7 +72,10 @@ namespace termitesABMS_toolkitAlpha_r5.agentEnvironments
             displayLines.Add(new LineCurve(B, F));
             displayLines.Add(new LineCurve(C, G));
             displayLines.Add(new LineCurve(D, H));
-
+            displayLines.Add(new LineCurve(E, H));
+            displayLines.Add(new LineCurve(H, G));
+            displayLines.Add(new LineCurve(G, F));
+            displayLines.Add(new LineCurve(F , E));
             return displayLines;
         }
 

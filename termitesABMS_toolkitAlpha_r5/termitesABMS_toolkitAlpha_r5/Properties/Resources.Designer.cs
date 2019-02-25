@@ -189,5 +189,55 @@ namespace termitesABMS_toolkitAlpha_r5.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap termitesGhxIcon_temp_14 {
+            get {
+                object obj = ResourceManager.GetObject("termitesGhxIcon_temp_14", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap termitesGhxIcon_temp_15 {
+            get {
+                object obj = ResourceManager.GetObject("termitesGhxIcon_temp_15", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap termitesGhxIcon_temp_151 {
+            get {
+                object obj = ResourceManager.GetObject("termitesGhxIcon_temp_151", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap termitesGhxIcon_temp_16 {
+            get {
+                object obj = ResourceManager.GetObject("termitesGhxIcon_temp_16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap termitesGhxIcon_temp_17 {
+            get {
+                object obj = ResourceManager.GetObject("termitesGhxIcon_temp_17", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }
